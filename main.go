@@ -13,22 +13,22 @@ func Bind(fs *flag.FlagSet, cfg interface{}) {
 	for i := 0; i < v.NumField(); i++ {
 		f := v.Field(i)
 		field := t.Field(i)
-		name := strings.ToLower(field.Name)
 		desc, ok := field.Tag.Lookup("flag")
 		if !ok {
 			continue
 		}
-		if first, rest, ok := strings.Cut(desc, ","); ok {
-			name = first
-			desc = rest
+		name, usage, ok := strings.Cut(desc, ",")
+		if !ok {
+			name = strings.ToLower(field.Name)
+			usage = desc
 		}
 		switch f.Kind() {
 		case reflect.Bool:
-			fs.BoolVar(f.Addr().Interface().(*bool), name, f.Bool(), desc)
+			fs.BoolVar(f.Addr().Interface().(*bool), name, f.Bool(), usage)
 		case reflect.Int:
-			fs.IntVar(f.Addr().Interface().(*int), name, int(f.Int()), desc)
+			fs.IntVar(f.Addr().Interface().(*int), name, int(f.Int()), usage)
 		case reflect.String:
-			fs.StringVar(f.Addr().Interface().(*string), name, f.String(), desc)
+			fs.StringVar(f.Addr().Interface().(*string), name, f.String(), usage)
 		}
 	}
 }
