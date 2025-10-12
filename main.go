@@ -38,6 +38,8 @@ func Bind(fs *flag.FlagSet, cfg interface{}) {
 			fs.BoolVar(f.Addr().Interface().(*bool), name, f.Bool(), usage)
 		case reflect.Int:
 			fs.IntVar(f.Addr().Interface().(*int), name, int(f.Int()), usage)
+		case reflect.Uint:
+			fs.UintVar(f.Addr().Interface().(*uint), name, uint(f.Uint()), usage)
 		case reflect.String:
 			fs.StringVar(f.Addr().Interface().(*string), name, f.String(), usage)
 		}
