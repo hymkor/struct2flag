@@ -13,6 +13,17 @@ func Bind(fs *flag.FlagSet, cfg interface{}) {
 	for i := 0; i < v.NumField(); i++ {
 		f := v.Field(i)
 		field := t.Field(i)
+
+		switch f.Kind() {
+		case reflect.Struct:
+			Bind(fs, f.Addr().Interface())
+			continue
+		case reflect.Pointer:
+			if f.Type().Elem().Kind() == reflect.Struct && !f.IsNil() {
+				Bind(fs, f.Interface())
+				continue
+			}
+		}
 		desc, ok := field.Tag.Lookup("flag")
 		if !ok {
 			continue
