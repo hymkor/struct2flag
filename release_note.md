@@ -1,3 +1,7 @@
+v0.0.3
+======
+Oct 13, 2025
+
 - Fix: `panic: reflect.Value.Interface: cannot return value obtained from unexported field or method` when unexported fields exist.
 
 v0.0.2

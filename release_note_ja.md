@@ -1,3 +1,7 @@
+v0.0.3
+======
+Oct 13, 2025
+
 - エクスポートされていないフィールドがあると、`panic: reflect.Value.Interface: cannot return value obtained from unexported field or method` が発生する修正
 
 v0.0.2
