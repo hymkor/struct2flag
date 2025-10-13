@@ -14,6 +14,9 @@ func Bind(fs *flag.FlagSet, cfg interface{}) {
 		f := v.Field(i)
 		field := t.Field(i)
 
+		if !field.IsExported() {
+			continue
+		}
 		switch f.Kind() {
 		case reflect.Struct:
 			Bind(fs, f.Addr().Interface())
