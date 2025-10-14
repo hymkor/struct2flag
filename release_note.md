@@ -1,3 +1,7 @@
+v0.0.4
+======
+Oct 14, 2025
+
 - Changed recursive binding behavior: Only struct or struct pointer fields explicitly tagged with `flag:""` are now traversed recursively. This prevents unintended recursion into unrelated struct types.
 
 v0.0.3
