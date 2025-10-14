@@ -17,6 +17,10 @@ func Bind(fs *flag.FlagSet, cfg interface{}) {
 		if !field.IsExported() {
 			continue
 		}
+		desc, ok := field.Tag.Lookup("flag")
+		if !ok {
+			continue
+		}
 		switch f.Kind() {
 		case reflect.Struct:
 			Bind(fs, f.Addr().Interface())
@@ -26,10 +30,6 @@ func Bind(fs *flag.FlagSet, cfg interface{}) {
 				Bind(fs, f.Interface())
 				continue
 			}
-		}
-		desc, ok := field.Tag.Lookup("flag")
-		if !ok {
-			continue
 		}
 		name, usage, ok := strings.Cut(desc, ",")
 		if !ok {
