@@ -5,7 +5,7 @@ struct2flag
 
 `example.go`
 
-```example.go
+```examples/example.go
 package main
 
 import (
@@ -35,10 +35,10 @@ func main() {
 }
 ```
 
-`go run example.go -h`
+`go run examples/example.go -h`
 
-```go run example.go -h |
-Usage of R:\a4\a44a86327d99b87e3f152a25b4797c07342ef4e9a8505c7770013709f4b45dc6-d\example.exe:
+```go run examples/example.go -h |
+Usage of R:\go-build1235459047\b001\exe\example.exe:
   -b	This is a boolean flag
   -n int
     	This is an integer flag
@@ -46,9 +46,9 @@ Usage of R:\a4\a44a86327d99b87e3f152a25b4797c07342ef4e9a8505c7770013709f4b45dc6-
     	this is a string flag
 ```
 
-`go run example.go -b -n 1 -s foo`
+`go run examples/example.go -b -n 1 -s foo`
 
-```go run example.go -b -n 1 -s foo |
+```go run examples/example.go -b -n 1 -s foo |
 B=true
 N=1
 S="foo"
