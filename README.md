@@ -4,6 +4,7 @@ struct2flag
 <!-- badges.cmd |-->
 [![Go Test](https://github.com/hymkor/struct2flag/actions/workflows/go.yml/badge.svg)](https://github.com/hymkor/struct2flag/actions/workflows/go.yml)
 [![License](https://img.shields.io/badge/License-MIT-red)](https://github.com/hymkor/struct2flag/blob/master/LICENSE)
+[![Go Reference](https://pkg.go.dev/badge/github.com/hymkor/struct2flag.svg)](https://pkg.go.dev/github.com/hymkor/struct2flag)
 <!-- -->
 
 `struct2flag` automatically registers struct fields as flags for your Go command-line programs.
@@ -46,7 +47,7 @@ func main() {
 `go run examples/example.go -h`
 
 ```go run examples/example.go -h |
-Usage of R:\go-build1235459047\b001\exe\example.exe:
+Usage of R:\df\dfb7c209f28c64eff269f05153103a4f101eb68e09b8bbe29bf301cba35b584e-d\example.exe:
   -b	This is a boolean flag
   -n int
     	This is an integer flag
