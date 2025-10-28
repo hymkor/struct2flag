@@ -3,6 +3,7 @@ struct2flag
 
 <!-- badges.cmd |-->
 [![Go Test](https://github.com/hymkor/struct2flag/actions/workflows/go.yml/badge.svg)](https://github.com/hymkor/struct2flag/actions/workflows/go.yml)
+[![License](https://img.shields.io/badge/License-MIT-red)](https://github.com/hymkor/struct2flag/blob/master/LICENSE)
 <!-- -->
 
 `struct2flag` automatically registers struct fields as flags for your Go command-line programs.
