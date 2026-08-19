@@ -14,6 +14,10 @@ type FlagSet interface {
 }
 
 func Bind(fs FlagSet, cfg interface{}) {
+	BindTag("flag", fs, cfg)
+}
+
+func BindTag(tag string, fs FlagSet, cfg interface{}) {
 	v := reflect.ValueOf(cfg).Elem()
 	t := v.Type()
 
@@ -24,7 +28,7 @@ func Bind(fs FlagSet, cfg interface{}) {
 		if !field.IsExported() {
 			continue
 		}
-		desc, ok := field.Tag.Lookup("flag")
+		desc, ok := field.Tag.Lookup(tag)
 		if !ok {
 			continue
 		}
