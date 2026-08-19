@@ -2,6 +2,7 @@ Changelog
 =========
 
 - float64 をサポート (#2)
+- time.Duration をサポート (#3)
 
 v0.1.0
 ------

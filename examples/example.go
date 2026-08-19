@@ -5,15 +5,17 @@ package main
 import (
 	"flag"
 	"fmt"
+	"time"
 
 	"github.com/hymkor/struct2flag"
 )
 
 type Env struct {
-	B bool    `flag:"b,This is a boolean flag"`
-	N int     `flag:"n,This is an integer flag"`
-	S string  `flag:"s,this is a string flag"`
-	F float64 `flag:"f,this is a float flag"`
+	B bool          `flag:"b,This is a boolean flag"`
+	N int           `flag:"n,This is an integer flag"`
+	S string        `flag:"s,this is a string flag"`
+	F float64       `flag:"f,this is a float flag"`
+	D time.Duration `flag:"d,this is a time.duration flag"`
 }
 
 func (e Env) Run() {
@@ -21,6 +23,7 @@ func (e Env) Run() {
 	fmt.Printf("N=%#v\n", e.N)
 	fmt.Printf("S=%#v\n", e.S)
 	fmt.Printf("F=%#v\n", e.F)
+	fmt.Printf("D=%v\n", e.D)
 }
 
 func main() {
