@@ -1,6 +1,10 @@
 Changelog
 =========
 
+v0.1.0
+------
+Aug 19, 2025
+
 - Added support for option parsers other than the `flag` package by using an interface instead of directly depending on `flag.FlagSet`. Any type that provides methods such as `StringVar` can now be used. (#1)
 - Added the BindTag method, allowing arbitrary struct tag names to be used. (#1)
 
