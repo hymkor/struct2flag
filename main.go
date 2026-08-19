@@ -6,7 +6,14 @@ import (
 	"strings"
 )
 
-func Bind(fs *flag.FlagSet, cfg interface{}) {
+type FlagSet interface {
+	BoolVar(p *bool, name string, value bool, usage string)
+	IntVar(p *int, name string, value int, usage string)
+	UintVar(p *uint, name string, value uint, usage string)
+	StringVar(p *string, name string, value string, usage string)
+}
+
+func Bind(fs FlagSet, cfg interface{}) {
 	v := reflect.ValueOf(cfg).Elem()
 	t := v.Type()
 
