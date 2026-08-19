@@ -20,6 +20,10 @@ type ts struct {
 	B1 bool `flag:"boolean option(1)"`
 	B2 bool `flag:"B2,boolean option(2)"`
 	B3 bool `flag:"B3,boolean option(3)"`
+
+	F1 float64 `flag:"boolean option(1)"`
+	F2 float64 `flag:"F2,boolean option(2)"`
+	F3 float64 `flag:"F3,boolean option(3)"`
 }
 
 func TestBind(t *testing.T) {
@@ -34,6 +38,8 @@ func TestBind(t *testing.T) {
 			"-I2", "8",
 			"-b1",
 			"-B2",
+			"-f1", "2.0",
+			"-F2", "3.0",
 		},
 	)
 
@@ -71,6 +77,12 @@ func TestBind(t *testing.T) {
 		t.Fatalf("expect %#v,but %#v", ts1.B3, expect)
 	}
 
+	if expect := 2.0; ts1.F1 != expect {
+		t.Fatalf("expect %#v,but %#v", ts1.F1, expect)
+	}
+	if expect := 3.0; ts1.F2 != expect {
+		t.Fatalf("expect %#v,but %#v", ts1.F2, expect)
+	}
 	ts1 = &ts{}
 	flagSet = flag.NewFlagSet("", flag.ContinueOnError)
 	struct2flag.Bind(flagSet, ts1)
@@ -81,6 +93,8 @@ func TestBind(t *testing.T) {
 		[]string{"-i2", "should be upper case"},
 		[]string{"-B1"},
 		[]string{"-b2"},
+		[]string{"-F1", "should be upper case"},
+		[]string{"-f2", "should be upper case"},
 	}
 	stderrSaved := os.Stderr
 	devnull, err := os.Create(os.DevNull)
