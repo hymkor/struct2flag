@@ -2,6 +2,7 @@ Changelog
 =========
 
 - Support float64 (#2)
+- Support time.Duration (#3)
 
 v0.1.0
 ------
