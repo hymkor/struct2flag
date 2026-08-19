@@ -1,6 +1,10 @@
 Changelog
 =========
 
+v0.2.0
+------
+Aug 19, 2025
+
 - Support float64 (#2)
 - Support time.Duration (#3)
 

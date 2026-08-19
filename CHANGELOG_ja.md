@@ -1,6 +1,10 @@
 Changelog
 =========
 
+v0.2.0
+------
+Aug 19, 2025
+
 - float64 をサポート (#2)
 - time.Duration をサポート (#3)
 
