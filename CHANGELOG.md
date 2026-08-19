@@ -1,6 +1,8 @@
 Changelog
 =========
 
+- Support float64 (#2)
+
 v0.1.0
 ------
 Aug 19, 2025
