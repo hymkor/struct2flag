@@ -20,15 +20,17 @@ package main
 import (
     "flag"
     "fmt"
+    "time"
 
     "github.com/hymkor/struct2flag"
 )
 
 type Env struct {
-    B bool    `flag:"b,This is a boolean flag"`
-    N int     `flag:"n,This is an integer flag"`
-    S string  `flag:"s,this is a string flag"`
-    F float64 `flag:"f,this is a float flag"`
+    B bool          `flag:"b,This is a boolean flag"`
+    N int           `flag:"n,This is an integer flag"`
+    S string        `flag:"s,this is a string flag"`
+    F float64       `flag:"f,this is a float flag"`
+    D time.Duration `flag:"d,this is a time.duration flag"`
 }
 
 func (e Env) Run() {
@@ -36,6 +38,7 @@ func (e Env) Run() {
     fmt.Printf("N=%#v\n", e.N)
     fmt.Printf("S=%#v\n", e.S)
     fmt.Printf("F=%#v\n", e.F)
+    fmt.Printf("D=%v\n", e.D)
 }
 
 func main() {
@@ -49,8 +52,10 @@ func main() {
 `go run examples/example.go -h`
 
 ```go run examples/example.go -h |
-Usage of R:\df\dfb7c209f28c64eff269f05153103a4f101eb68e09b8bbe29bf301cba35b584e-d\example.exe:
+Usage of R:\go-build3962870177\b001\exe\example.exe:
   -b	This is a boolean flag
+  -d duration
+    	this is a time.duration flag
   -f float
     	this is a float flag
   -n int
@@ -59,13 +64,14 @@ Usage of R:\df\dfb7c209f28c64eff269f05153103a4f101eb68e09b8bbe29bf301cba35b584e-
     	this is a string flag
 ```
 
-`go run examples/example.go -b -n 1 -s foo -f 2.0`
+`go run examples/example.go -b -n 1 -s foo -f 2.0 -d 1m30s`
 
-```go run examples/example.go -b -n 1 -s foo -f 2.0 |
+```go run examples/example.go -b -n 1 -s foo -f 2.0 -d 1m30s |
 B=true
 N=1
 S="foo"
 F=2
+D=1m30s
 ```
 
 Reading default values from JSON and overriding them with command-line flags
