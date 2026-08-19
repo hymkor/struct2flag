@@ -10,6 +10,7 @@ type FlagSet interface {
 	IntVar(p *int, name string, value int, usage string)
 	UintVar(p *uint, name string, value uint, usage string)
 	StringVar(p *string, name string, value string, usage string)
+	Float64Var(p *float64, name string, value float64, usage string)
 }
 
 func BindTag(tag string, fs FlagSet, cfg interface{}) {
@@ -51,6 +52,8 @@ func BindTag(tag string, fs FlagSet, cfg interface{}) {
 			fs.UintVar(f.Addr().Interface().(*uint), name, uint(f.Uint()), usage)
 		case reflect.String:
 			fs.StringVar(f.Addr().Interface().(*string), name, f.String(), usage)
+		case reflect.Float64:
+			fs.Float64Var(f.Addr().Interface().(*float64), name, f.Float(), usage)
 		}
 	}
 }

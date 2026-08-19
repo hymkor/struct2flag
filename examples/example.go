@@ -10,15 +10,17 @@ import (
 )
 
 type Env struct {
-	B bool   `flag:"b,This is a boolean flag"`
-	N int    `flag:"n,This is an integer flag"`
-	S string `flag:"s,this is a string flag"`
+	B bool    `flag:"b,This is a boolean flag"`
+	N int     `flag:"n,This is an integer flag"`
+	S string  `flag:"s,this is a string flag"`
+	F float64 `flag:"f,this is a float flag"`
 }
 
 func (e Env) Run() {
 	fmt.Printf("B=%#v\n", e.B)
 	fmt.Printf("N=%#v\n", e.N)
 	fmt.Printf("S=%#v\n", e.S)
+	fmt.Printf("F=%#v\n", e.F)
 }
 
 func main() {
