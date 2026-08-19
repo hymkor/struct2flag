@@ -3,6 +3,7 @@ package core
 import (
 	"reflect"
 	"strings"
+	"time"
 )
 
 type FlagSet interface {
@@ -11,11 +12,14 @@ type FlagSet interface {
 	UintVar(p *uint, name string, value uint, usage string)
 	StringVar(p *string, name string, value string, usage string)
 	Float64Var(p *float64, name string, value float64, usage string)
+	DurationVar(p *time.Duration, name string, value time.Duration, usage string)
 }
 
 func BindTag(tag string, fs FlagSet, cfg interface{}) {
 	v := reflect.ValueOf(cfg).Elem()
 	t := v.Type()
+
+	durationType := reflect.TypeOf(time.Duration(0))
 
 	for i := 0; i < v.NumField(); i++ {
 		f := v.Field(i)
@@ -42,6 +46,10 @@ func BindTag(tag string, fs FlagSet, cfg interface{}) {
 		if !ok {
 			name = strings.ToLower(field.Name)
 			usage = desc
+		}
+		if f.Type() == durationType {
+			fs.DurationVar(f.Addr().Interface().(*time.Duration), name, time.Duration(f.Int()), usage)
+			continue
 		}
 		switch f.Kind() {
 		case reflect.Bool:
